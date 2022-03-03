@@ -1,11 +1,12 @@
+const val COMMISSION_FACTOR = 75U
+const val COMMISSION_MIN = 35_00U
 
 fun main() {
-    val moneyTransferAmount: Int = 4830_00
-    val commissionFactor: Int = 75
-    val commissionMin: Int = 35_00
+    print("Введите сумму в копейках, которую вы хотите перевести: ")
+    val moneyTransferAmount = readLine()?.toUInt()?: return
 
-    val amount = if (moneyTransferAmount * commissionFactor / 10000 <= commissionMin) (moneyTransferAmount + commissionMin)
-    else (moneyTransferAmount + (moneyTransferAmount * commissionFactor / 10000))
+    val amount = if (moneyTransferAmount * COMMISSION_FACTOR / 10_000_U <= COMMISSION_MIN) (moneyTransferAmount + COMMISSION_MIN)
+    else (moneyTransferAmount + (moneyTransferAmount * COMMISSION_FACTOR / 10_000_U))
 
     println("Сумма перевода $moneyTransferAmount с комиссией ${amount - moneyTransferAmount} составит: = $amount копеек")
 }
